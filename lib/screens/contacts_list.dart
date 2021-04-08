@@ -21,6 +21,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
   Ficaria muito ruim ter que usar: state.msgError / state.contatos / state.carregou ; Perigoso trabalhar c/ valores opcionais
 
 2 - Vamos usar Polimorfismo para resolver o problema.
+ - Classe para abstract do state - ContactsListState
+ - Criar Classes extends abstract com as variações do estado - Loading,Init,Loaded,Error
+ - Cubit para controlar o state, começando c/ initstate , e void reload, para carregar
+ - ContactsContainer extends BlocContainer para colocar o BlocProvider juntando o Cubit no context da View
+
 */
 @immutable
 abstract class ContactsListState {
@@ -102,11 +107,7 @@ class _ContactsListState extends State<ContactsList> {
                 return _ContactItem(
                   contact,
                   onClick: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => TransactionForm(contact),
-                      ),
-                    );
+                    push(context, TransactionContainer(contact));
                   },
                 );
               },

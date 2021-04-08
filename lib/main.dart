@@ -1,6 +1,5 @@
-import 'package:bytebank/screens/counter.dart';
 import 'package:bytebank/screens/dashboard.dart';
-import 'package:bytebank/screens/name.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
